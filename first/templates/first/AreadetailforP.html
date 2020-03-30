@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+  border-right:1px solid #bbb;
+}
+
+li:last-child {
+
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+
+.active {
+  background-color: #4CAF50;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  display:inline-block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
+<div class="jumbotron" style="background-color:grey">
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li style="padding-left:29%;padding-right:29%"><a style="color:white"> AVAILABLE AREA SHOWN BELOW </a> </li>
+        {% if user.is_authenticated %}
+            <li style="float: right"><a  href="{% url 'users:logout_mang' %}">Logout</a></li>
+        {% endif %}
+        <li style="float: right"><a href="#contact" >Contact</a></li>
+
+    </ul>
+
+</div>
+</center>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+    <div class="row">
+        {% for areawise in all_areawise %}
+        <div class="col-sm-3" style="padding-bottom:20px">
+            <span class="card"  >
+                <h3>{{ areawise.name }}</h3>
+                <p>{{areawise.dilvry_pday}}</p>
+                <a href="{% url 'first:display' areawise.id %}"  class="btn btn-primary">Check</a>
+            </span>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

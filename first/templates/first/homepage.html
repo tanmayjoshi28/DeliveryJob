@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class = "jumbotron">
+        <center>
+        <h1>Welcome To Dashboard</h1>
+            <br>
+        <form>
+            {% csrf_token %}
+            <div>
+                <span style="padding-right: 50px;">
+                    <label>Operator</label>
+                    <button style="background-color" type="submit" formaction="{% url 'users:login_op' %}" class="btn btn-primary">LOGIN</button>
+                </span>
+                <span style="padding-left: 50px;">
+                    <label>Manager</label>
+                    <button type="submit" formaction="{% url 'users:login_mang' %}" class="btn btn-primary">LOGIN</button>
+                </span>
+            </div>
+        </form>
+        </center>
+    </div>
+
+</body>
+</html>

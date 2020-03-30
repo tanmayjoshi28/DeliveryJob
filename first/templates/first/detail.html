@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+<style>
+.area{
+    font-size:30;
+    color:blue;
+}
+.column{
+    font-size:40;
+    color:black;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+  float: left;
+  border-right:1px solid #bbb;
+}
+
+li:last-child {
+
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+</style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+{% csrf_token %}
+    <div class="jumbotron" style="background-color:grey">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#news">News</a></li>
+        <div style="padding-left:29%;padding-right:29%">
+            <li>
+                <a style="color:white">{{ area.name }} </a>
+            </li>
+            <li>
+                <a style="color:white" >Area Code - {{ area.pincode }} </a>
+            </li>
+            <li style="border-right:none">
+                <a style="color:white;"> P/D Delivery is {{ area.dilvry_pday }} </a>
+            </li>
+        </div>
+            {% if user.is_authenticated %}
+                <li style="float: right"><a href="{% url 'users:logout_op' %}">Logout</a></li>
+            {% endif %}
+            <li style="float:right;text-align:center" ><a href="#contact">Contact  </a></li>
+
+        </ul>
+    </div>
+    <center>
+    <h2>ENTER CREDENTIALS HERE</h2>
+    </center><br>
+        <form action="{% url 'first:inputperson' area.id%}" method="post" >
+        {% csrf_token %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
+        <center>
+            <label>NAME</label>
+            <br>
+            <input type="text" name="name">
+            <br><br>
+            <label>VEHICLE NO.</label>
+            <br>
+            <input type="text" name="vno">
+            <br><br>
+            <label>PHONE NO</label>
+            <br>
+            <input type="text" name="phno">
+            <br><br>
+            <button type="submit" value="submit">SUBMIT</button>
+        </center>
+    </form>
+</body>
+</html>
+
