@@ -1,6 +1,4 @@
 # DeliveryJob
-### A Website Demo where one can apply for Delivery Job Parttime / Fulltime as per Areas Made available by different Company Managers .
-
 ### MULTIPLE USER TYPE IMPLMENTATION 
 ##### 1 - MANAGER
 #### 2 - OPERATOR
@@ -17,4 +15,24 @@
     BOTH MANAGERS AND OPERATOR'S ARE CREATED BY ADMIN 
     BUT FOR LEARNING PURPOSE I HAVE ADDED OPERATOR REGISTRATION FORM BUT NOT THE FORM FOR REGISTRATION OF OPERATORS.
          
-         
+ ### Install [Django](https://docs.djangoproject.com/en/3.0/intro/install/) and [BeautifullSoup](https://pypi.org/project/beautifulsoup4/)
+#### To Run open Terminal :
+##### Go to directory in which manage.py is located :
+ENTER the follwing stepwise
+```
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+```
+
+### If it is showing error python not defined :
+Refer [This](https://geek-university.com/python/add-python-to-the-windows-path/) Article
+
+## To access Admin :
+### First create a superuser:
+#### Open Terminal :
+#### Go to directory in which manage.py is located :
+```
+python manage.py createsuperuser
+```
+Follow the prompts and runserver again , add '/admin' to the url       
