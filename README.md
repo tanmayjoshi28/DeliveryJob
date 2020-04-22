@@ -15,7 +15,7 @@
     BOTH MANAGERS AND OPERATOR'S ARE CREATED BY ADMIN 
     BUT FOR LEARNING PURPOSE I HAVE ADDED OPERATOR REGISTRATION FORM BUT NOT THE FORM FOR REGISTRATION OF OPERATORS.
          
- ### Install [Django](https://docs.djangoproject.com/en/3.0/intro/install/) and [BeautifullSoup](https://pypi.org/project/beautifulsoup4/)
+### TO Run Install [Django](https://docs.djangoproject.com/en/3.0/intro/install/) 
 #### To Run open Terminal :
 ##### Go to directory in which manage.py is located :
 ENTER the follwing stepwise
